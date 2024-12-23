@@ -21,15 +21,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ProjectBankaiTheme {
-                Scaffold { padding ->
-                    Text(
-                        text = "Hello, world!",
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .background(Color.White)
-                            .padding(padding)
-                    )
-                }
+
             }
         }
     }

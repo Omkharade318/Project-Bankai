@@ -3,16 +3,15 @@ package com.example.projectbankai.ui.screens.authentication.start
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
-import android.graphics.fonts.Font
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -38,13 +37,13 @@ import androidx.compose.ui.unit.sp
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
-import com.example.projectbankai.MainActivity
 import com.example.projectbankai.ui.theme.LightPurple
 import kotlinx.coroutines.delay
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContent {
             Splash()
@@ -70,7 +69,7 @@ fun Splash(){
 
     LaunchedEffect(Unit) {
         delay(2500)
-        context.startActivity(Intent(context, MainActivity::class.java))
+        context.startActivity(Intent(context, StartActivity::class.java))
         if(context is Activity){
             context.finish()
         }

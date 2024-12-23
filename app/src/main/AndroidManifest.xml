@@ -24,6 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" android:exported="false"/>
+        <activity android:name=".ui.screens.authentication.start.StartActivity" android:exported="false"/>
     </application>
 
 </manifest>
