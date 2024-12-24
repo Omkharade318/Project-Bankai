@@ -107,8 +107,9 @@ fun StartUI(
                 navController.navigate(AuthScreens.Login.route)
             },
             modifier = Modifier
+                .fillMaxWidth()
                 .align(Alignment.CenterHorizontally)
-                .padding(16.dp)
+                .padding(vertical = 16.dp, horizontal = 32.dp)
                 .clip(shape = RoundedCornerShape(30.dp)),
             colors = ButtonDefaults.buttonColors(
                 containerColor = LightPurple,
@@ -120,7 +121,8 @@ fun StartUI(
                 text = "Get Started",
                 fontSize = 24.sp,
                 fontFamily = FontFamily.Serif,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(vertical = 2.dp)
             )
         }
     }
