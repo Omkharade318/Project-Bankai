@@ -25,7 +25,7 @@ fun AuthNavigation() {
         }
 
         composable(route = AuthScreens.Register.route){
-            Register()
+            Register(navController = navController)
         }
 
         composable(route = HomeScreens.Home.route) {
