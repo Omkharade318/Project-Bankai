@@ -58,6 +58,8 @@ fun Register(
 
     var showPassword by remember { mutableStateOf(false) }
 
+    var showBottomAppBar by remember { mutableStateOf(false) }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -203,7 +205,7 @@ fun Register(
                         onClick = {
 
                             if(userEmail.isNotEmpty() && password.isNotEmpty()){
-                                navController.navigate(HomeScreens.Home.route)
+                                showBottomAppBar = true
                                 Toast.makeText(context, "Account Created Successfully", Toast.LENGTH_SHORT).show()
                             }
                             else if (userEmail.isEmpty() && password.isEmpty()){

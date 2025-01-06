@@ -45,10 +45,15 @@ fun MyBottomAppBar(){
     }
 
     Scaffold(
+        containerColor = Color.Transparent,
         bottomBar = {
+
             BottomAppBar(
-                containerColor = Color.White,
-                modifier = Modifier.padding(horizontal = 12.dp)
+                containerColor = Color.Transparent,
+                modifier = Modifier
+                    .padding(horizontal = 12.dp)
+                    .clip(RoundedCornerShape(16.dp)),
+
             ) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -97,7 +102,7 @@ fun MyBottomAppBar(){
                         onClick = {
                             selected.value = R.drawable.ic_quick
                             navController.navigate(BottomBarScreen.QuickSkills.screen){
-                                popUpTo(0)
+                                popUpTo(BottomBarScreen.Home.screen)
                             }
                         },
                         modifier = Modifier.weight(1f)
@@ -136,7 +141,7 @@ fun MyBottomAppBar(){
                         onClick = {
                             selected.value = R.drawable.ic_learn
                             navController.navigate(BottomBarScreen.Learn.screen){
-                                popUpTo(0)
+                                popUpTo(BottomBarScreen.Home.screen)
                             }
                         },
                         modifier = Modifier.weight(1f)
@@ -152,7 +157,7 @@ fun MyBottomAppBar(){
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_learn),
                                 modifier = Modifier.size(28.dp),
-                                contentDescription = "Home",
+                                contentDescription = "learn",
                                 tint = if (selected.value == R.drawable.ic_learn) Color.White else LightPurple
                             )
 
@@ -175,7 +180,7 @@ fun MyBottomAppBar(){
                         onClick = {
                             selected.value = R.drawable.ic_notifications
                             navController.navigate(BottomBarScreen.Notifications.screen){
-                                popUpTo(0)
+                                popUpTo(BottomBarScreen.Home.screen)
                             }
                         },
                         modifier = Modifier.weight(1f)
@@ -191,7 +196,7 @@ fun MyBottomAppBar(){
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_notifications),
                                 modifier = Modifier.size(28.dp),
-                                contentDescription = "Home",
+                                contentDescription = "Notifications",
                                 tint = if (selected.value == R.drawable.ic_notifications) Color.White else LightPurple
                             )
 
@@ -214,7 +219,7 @@ fun MyBottomAppBar(){
                         onClick = {
                             selected.value = R.drawable.ic_profile
                             navController.navigate(BottomBarScreen.Profile.screen){
-                                popUpTo(0)
+                                popUpTo(BottomBarScreen.Home.screen)
                             }
                         },
                         modifier = Modifier.weight(1f)
@@ -230,7 +235,7 @@ fun MyBottomAppBar(){
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_profile),
                                 modifier = Modifier.size(28.dp),
-                                contentDescription = "Home",
+                                contentDescription = "Profile",
                                 tint = if (selected.value == R.drawable.ic_profile) Color.White else LightPurple
                             )
                         }
