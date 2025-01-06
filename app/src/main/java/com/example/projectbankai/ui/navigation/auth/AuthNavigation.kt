@@ -32,10 +32,6 @@ fun AuthNavigation() {
             Register(navController = navController)
         }
 
-        composable(route = HomeScreens.Home.route) {
-            HomeScreen(navController = navController)
-        }
-
 
     }
 }

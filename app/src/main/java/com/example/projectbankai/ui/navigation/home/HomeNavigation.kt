@@ -1,6 +1,8 @@
 package com.example.projectbankai.ui.navigation.home
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -11,13 +13,12 @@ import com.example.projectbankai.ui.screens.profile.ProfileScreen
 import com.example.projectbankai.ui.screens.quickSkills.QuickSkillsScreen
 
 @Composable
-fun HomeNavigation(){
-    val navController = rememberNavController()
+fun HomeNavigation(navController: NavHostController){
 
     NavHost(navController = navController, startDestination = "home"){
 
         composable(route = HomeScreens.Home.route){
-            HomeScreen(navController = navController)
+            HomeScreen()
         }
 
         composable(route = HomeScreens.QuickSkills.route){

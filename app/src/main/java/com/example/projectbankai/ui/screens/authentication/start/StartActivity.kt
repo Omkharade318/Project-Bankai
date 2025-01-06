@@ -37,6 +37,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.projectbankai.R
+import com.example.projectbankai.ui.components.common.BottomBarScreen
+import com.example.projectbankai.ui.components.common.MyBottomAppBar
 import com.example.projectbankai.ui.navigation.auth.AuthNavigation
 import com.example.projectbankai.ui.navigation.auth.AuthScreens
 import com.example.projectbankai.ui.navigation.home.HomeScreens
@@ -68,6 +70,8 @@ fun StartUI(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        val appBar = MyBottomAppBar()
+
         Text(
             text = "Skip",
             modifier = Modifier
@@ -75,8 +79,7 @@ fun StartUI(
                 .align(Alignment.End)
                 .clickable(
                     onClick ={
-                        navController.navigate(HomeScreens.Home.route)
-                    }
+                        appBar                    }
                 ),
             textAlign = TextAlign.End,
             fontSize = 24.sp,
