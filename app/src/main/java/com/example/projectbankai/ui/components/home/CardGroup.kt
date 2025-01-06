@@ -12,7 +12,7 @@ import com.example.projectbankai.R
 fun CardGroup(){
     LazyRow(
         modifier = Modifier
-            .padding(top = 8.dp, bottom = 100.dp)
+            .padding(top = 8.dp, bottom = 12.dp)
     ) {
         item {
             SelectCard(

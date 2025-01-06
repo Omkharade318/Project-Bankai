@@ -1,6 +1,8 @@
 package com.example.projectbankai.ui.screens.authentication.start
 
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
@@ -22,12 +24,17 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -37,11 +44,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.projectbankai.R
-import com.example.projectbankai.ui.components.common.BottomBarScreen
 import com.example.projectbankai.ui.components.common.MyBottomAppBar
 import com.example.projectbankai.ui.navigation.auth.AuthNavigation
 import com.example.projectbankai.ui.navigation.auth.AuthScreens
-import com.example.projectbankai.ui.navigation.home.HomeScreens
 import com.example.projectbankai.ui.theme.DarkPurple
 import com.example.projectbankai.ui.theme.LightPurple
 
@@ -58,10 +63,13 @@ class StartActivity: ComponentActivity() {
     }
 }
 
+
 @Composable
 fun StartUI(
-    navController : NavController
+    navController : NavController,
 ){
+
+    var showBottomAppBar by remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -70,7 +78,8 @@ fun StartUI(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        val appBar = MyBottomAppBar()
+
+        if(showBottomAppBar) MyBottomAppBar()
 
         Text(
             text = "Skip",
@@ -79,7 +88,8 @@ fun StartUI(
                 .align(Alignment.End)
                 .clickable(
                     onClick ={
-                        appBar                    }
+                        showBottomAppBar = true
+                    }
                 ),
             textAlign = TextAlign.End,
             fontSize = 24.sp,
