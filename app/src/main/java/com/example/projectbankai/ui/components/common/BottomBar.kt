@@ -102,7 +102,7 @@ fun MyBottomAppBar(){
                         onClick = {
                             selected.value = R.drawable.ic_quick
                             navController.navigate(BottomBarScreen.QuickSkills.screen){
-                                popUpTo(BottomBarScreen.Home.screen)
+                                navController.popBackStack()
                             }
                         },
                         modifier = Modifier.weight(1f)
@@ -141,7 +141,7 @@ fun MyBottomAppBar(){
                         onClick = {
                             selected.value = R.drawable.ic_learn
                             navController.navigate(BottomBarScreen.Learn.screen){
-                                popUpTo(BottomBarScreen.Home.screen)
+                               navController.popBackStack()
                             }
                         },
                         modifier = Modifier.weight(1f)
@@ -180,7 +180,7 @@ fun MyBottomAppBar(){
                         onClick = {
                             selected.value = R.drawable.ic_notifications
                             navController.navigate(BottomBarScreen.Notifications.screen){
-                                popUpTo(BottomBarScreen.Home.screen)
+                                navController.popBackStack()
                             }
                         },
                         modifier = Modifier.weight(1f)
@@ -219,7 +219,7 @@ fun MyBottomAppBar(){
                         onClick = {
                             selected.value = R.drawable.ic_profile
                             navController.navigate(BottomBarScreen.Profile.screen){
-                                popUpTo(BottomBarScreen.Home.screen)
+                                navController.popBackStack()
                             }
                         },
                         modifier = Modifier.weight(1f)
