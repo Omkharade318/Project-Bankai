@@ -1,4 +1,4 @@
-package com.example.projectbankai.ui.screens.notifications
+package com.example.projectbankai.ui.screens.daily_challenges
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import com.example.projectbankai.ui.theme.LightPurple
 
 @Composable
-fun NotificationScreen() {
+fun DailyChallengeScreen() {
 
     Box(
         modifier = Modifier
@@ -19,7 +19,7 @@ fun NotificationScreen() {
         contentAlignment = Alignment.Center,
     ){
         Text(
-            text = "Notification Screen"
+            text = "Daily Challenge Screen"
         )
     }
 }

@@ -29,9 +29,9 @@ import androidx.navigation.compose.rememberNavController
 import com.example.projectbankai.ui.theme.DarkPurple
 import com.example.projectbankai.ui.theme.LightPurple
 import com.example.projectbankai.R
+import com.example.projectbankai.ui.screens.daily_challenges.DailyChallengeScreen
 import com.example.projectbankai.ui.screens.home.HomeScreen
 import com.example.projectbankai.ui.screens.learn.LearnScreen
-import com.example.projectbankai.ui.screens.notifications.NotificationScreen
 import com.example.projectbankai.ui.screens.profile.ProfileScreen
 import com.example.projectbankai.ui.screens.quickSkills.QuickSkillsScreen
 
@@ -178,7 +178,7 @@ fun MyBottomAppBar(){
                 ) {
                     IconButton(
                         onClick = {
-                            selected.value = R.drawable.ic_notifications
+                            selected.value = R.drawable.ic_daily_challenge
                             navController.navigate(BottomBarScreen.Notifications.screen){
                                 navController.popBackStack()
                             }
@@ -190,22 +190,22 @@ fun MyBottomAppBar(){
                             contentAlignment = Alignment.Center,
                             modifier = Modifier
                                 .clip(RoundedCornerShape(10.dp))
-                                .background(if (selected.value == R.drawable.ic_notifications) LightPurple else Color.Transparent)
+                                .background(if (selected.value == R.drawable.ic_daily_challenge) LightPurple else Color.Transparent)
                                 .padding(horizontal = 10.dp, vertical = 8.dp)
                         ) {
                             Icon(
-                                painter = painterResource(id = R.drawable.ic_notifications),
+                                painter = painterResource(id = R.drawable.ic_daily_challenge),
                                 modifier = Modifier.size(28.dp),
-                                contentDescription = "Notifications",
-                                tint = if (selected.value == R.drawable.ic_notifications) Color.White else LightPurple
+                                contentDescription = "Daily Challenges",
+                                tint = if (selected.value == R.drawable.ic_daily_challenge) Color.White else LightPurple
                             )
 
                         }
 
                     }
                     Text(
-                        text = "Notifications",
-                        color = if (selected.value == R.drawable.ic_notifications) DarkPurple else LightPurple
+                        text = "Daily",
+                        color = if (selected.value == R.drawable.ic_daily_challenge) DarkPurple else LightPurple
                     )
                 }
 
@@ -268,7 +268,7 @@ fun MyBottomAppBar(){
             }
 
             composable(route = BottomBarScreen.Notifications.screen){
-                NotificationScreen()
+                DailyChallengeScreen()
             }
 
             composable(route = BottomBarScreen.Profile.screen){
