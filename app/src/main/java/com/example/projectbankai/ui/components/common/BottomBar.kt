@@ -29,11 +29,11 @@ import androidx.navigation.compose.rememberNavController
 import com.example.projectbankai.ui.theme.DarkPurple
 import com.example.projectbankai.ui.theme.LightPurple
 import com.example.projectbankai.R
+import com.example.projectbankai.ui.screens.community.CommunityScreen
 import com.example.projectbankai.ui.screens.daily_challenges.DailyChallengeScreen
 import com.example.projectbankai.ui.screens.home.HomeScreen
 import com.example.projectbankai.ui.screens.learn.LearnScreen
 import com.example.projectbankai.ui.screens.profile.ProfileScreen
-import com.example.projectbankai.ui.screens.quickSkills.QuickSkillsScreen
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -78,7 +78,7 @@ fun MyBottomAppBar(){
                     ) {
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_home),
-                                modifier = Modifier.size(28.dp),
+                                modifier = Modifier.size(32.dp),
                                 contentDescription = "Home",
                                 tint = if (selected.value == R.drawable.ic_home) Color.White else LightPurple
                             )
@@ -100,8 +100,8 @@ fun MyBottomAppBar(){
                 ) {
                     IconButton(
                         onClick = {
-                            selected.value = R.drawable.ic_quick
-                            navController.navigate(BottomBarScreen.QuickSkills.screen){
+                            selected.value = R.drawable.ic_daily_challenge
+                            navController.navigate(BottomBarScreen.DailyChallenge.screen){
                                 navController.popBackStack()
                             }
                         },
@@ -112,22 +112,22 @@ fun MyBottomAppBar(){
                             contentAlignment = Alignment.Center,
                             modifier = Modifier
                                 .clip(RoundedCornerShape(10.dp))
-                                .background(if (selected.value == R.drawable.ic_quick) LightPurple else Color.Transparent)
+                                .background(if (selected.value == R.drawable.ic_daily_challenge) LightPurple else Color.Transparent)
                                 .padding(horizontal = 10.dp, vertical = 8.dp)
                         ) {
                             Icon(
-                                painter = painterResource(id = R.drawable.ic_quick),
-                                modifier = Modifier.size(28.dp),
+                                painter = painterResource(id = R.drawable.ic_daily_challenge),
+                                modifier = Modifier.size(32.dp),
                                 contentDescription = "QuickSkills",
-                                tint = if (selected.value == R.drawable.ic_quick) Color.White else LightPurple
+                                tint = if (selected.value == R.drawable.ic_daily_challenge) Color.White else LightPurple
                             )
 
                         }
 
                     }
                     Text(
-                        text = "Quick",
-                        color = if (selected.value == R.drawable.ic_quick) DarkPurple else LightPurple
+                        text = "Daily",
+                        color = if (selected.value == R.drawable.ic_daily_challenge) DarkPurple else LightPurple
                     )
                 }
 
@@ -156,7 +156,7 @@ fun MyBottomAppBar(){
                         ) {
                             Icon(
                                 painter = painterResource(id = R.drawable.ic_learn),
-                                modifier = Modifier.size(28.dp),
+                                modifier = Modifier.size(32.dp),
                                 contentDescription = "learn",
                                 tint = if (selected.value == R.drawable.ic_learn) Color.White else LightPurple
                             )
@@ -178,8 +178,8 @@ fun MyBottomAppBar(){
                 ) {
                     IconButton(
                         onClick = {
-                            selected.value = R.drawable.ic_daily_challenge
-                            navController.navigate(BottomBarScreen.Notifications.screen){
+                            selected.value = R.drawable.ic_community
+                            navController.navigate(BottomBarScreen.Community.screen){
                                 navController.popBackStack()
                             }
                         },
@@ -190,22 +190,22 @@ fun MyBottomAppBar(){
                             contentAlignment = Alignment.Center,
                             modifier = Modifier
                                 .clip(RoundedCornerShape(10.dp))
-                                .background(if (selected.value == R.drawable.ic_daily_challenge) LightPurple else Color.Transparent)
+                                .background(if (selected.value == R.drawable.ic_community) LightPurple else Color.Transparent)
                                 .padding(horizontal = 10.dp, vertical = 8.dp)
                         ) {
                             Icon(
-                                painter = painterResource(id = R.drawable.ic_daily_challenge),
-                                modifier = Modifier.size(28.dp),
-                                contentDescription = "Daily Challenges",
-                                tint = if (selected.value == R.drawable.ic_daily_challenge) Color.White else LightPurple
+                                painter = painterResource(id = R.drawable.ic_community),
+                                modifier = Modifier.size(32.dp),
+                                contentDescription = "Community",
+                                tint = if (selected.value == R.drawable.ic_community) Color.White else LightPurple
                             )
 
                         }
 
                     }
                     Text(
-                        text = "Daily",
-                        color = if (selected.value == R.drawable.ic_daily_challenge) DarkPurple else LightPurple
+                        text = "Community",
+                        color = if (selected.value == R.drawable.ic_community) DarkPurple else LightPurple
                     )
                 }
 
@@ -259,16 +259,16 @@ fun MyBottomAppBar(){
                 HomeScreen()
             }
 
-            composable(route = BottomBarScreen.QuickSkills.screen){
-                QuickSkillsScreen()
+            composable(route = BottomBarScreen.DailyChallenge.screen){
+                DailyChallengeScreen()
             }
 
             composable(route = BottomBarScreen.Learn.screen){
                 LearnScreen()
             }
 
-            composable(route = BottomBarScreen.Notifications.screen){
-                DailyChallengeScreen()
+            composable(route = BottomBarScreen.Community.screen){
+               CommunityScreen()
             }
 
             composable(route = BottomBarScreen.Profile.screen){

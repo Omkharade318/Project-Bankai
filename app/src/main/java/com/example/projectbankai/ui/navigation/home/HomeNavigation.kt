@@ -4,11 +4,11 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.projectbankai.ui.screens.community.CommunityScreen
 import com.example.projectbankai.ui.screens.daily_challenges.DailyChallengeScreen
 import com.example.projectbankai.ui.screens.home.HomeScreen
 import com.example.projectbankai.ui.screens.learn.LearnScreen
 import com.example.projectbankai.ui.screens.profile.ProfileScreen
-import com.example.projectbankai.ui.screens.quickSkills.QuickSkillsScreen
 
 @Composable
 fun HomeNavigation(navController: NavHostController){
@@ -20,7 +20,7 @@ fun HomeNavigation(navController: NavHostController){
         }
 
         composable(route = HomeScreens.QuickSkills.route){
-            QuickSkillsScreen()
+            DailyChallengeScreen()
         }
 
         composable(route = HomeScreens.Learn.route){
@@ -28,7 +28,7 @@ fun HomeNavigation(navController: NavHostController){
         }
 
         composable(route = HomeScreens.Notifications.route){
-            DailyChallengeScreen()
+            CommunityScreen()
         }
 
         composable(route = HomeScreens.Profile.route){

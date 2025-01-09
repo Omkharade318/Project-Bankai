@@ -1,4 +1,4 @@
-package com.example.projectbankai.ui.screens.quickSkills
+package com.example.projectbankai.ui.screens.community
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import com.example.projectbankai.ui.theme.LightPurple
 
 @Composable
-fun QuickSkillsScreen() {
+fun CommunityScreen() {
 
     Box(
         modifier = Modifier
@@ -19,7 +19,7 @@ fun QuickSkillsScreen() {
         contentAlignment = Alignment.Center,
     ){
         Text(
-            text = "Quick Screen"
+            text = "Community Screen"
         )
     }
 }
