@@ -24,7 +24,7 @@ fun MyProfileCard(
         horizontalAlignment = Alignment.CenterHorizontally
     ){
 
-        Card() {
+        Card {
             Image(
                 painter = painterResource(id = id),
                 contentDescription = title,

@@ -35,6 +35,7 @@ import com.example.projectbankai.ui.theme.Skin
 import com.example.projectbankai.ui.theme.DarkBlue
 import com.example.projectbankai.R
 import com.example.projectbankai.ui.components.home.CardGroup
+import com.example.projectbankai.ui.components.profile.CompletedCards
 import com.example.projectbankai.ui.components.profile.RecentlyWatchedCards
 import com.example.projectbankai.ui.components.profile.StatisticsItem
 
@@ -161,6 +162,27 @@ fun ProfileScreen() {
 
                         RecentlyWatchedCards()
 
+                        Text(
+                            text = "Completed",
+                            style = MaterialTheme.typography.headlineMedium,
+                            color = DarkBlue,
+                            modifier = Modifier
+                                .padding(start = 30.dp)
+                                .align(Alignment.Start),
+                            fontWeight = FontWeight.SemiBold
+                        )
+
+                        CompletedCards()
+
+                        Text(
+                            text = "Achievements",
+                            style = MaterialTheme.typography.headlineMedium,
+                            color = DarkBlue,
+                            modifier = Modifier
+                                .padding(start = 30.dp)
+                                .align(Alignment.Start),
+                            fontWeight = FontWeight.SemiBold
+                        )
                     }
                 }
             }
