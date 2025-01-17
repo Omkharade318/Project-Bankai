@@ -21,7 +21,9 @@ import com.example.projectbankai.R
 import com.example.projectbankai.ui.theme.DarkPurple
 
 @Composable
-fun ButtonGroup() {
+fun
+
+        ButtonGroup() {
     // State to track the currently selected button
     var selectedButton by remember { mutableIntStateOf(1) } // 1 corresponds to "All Topic" by default
 

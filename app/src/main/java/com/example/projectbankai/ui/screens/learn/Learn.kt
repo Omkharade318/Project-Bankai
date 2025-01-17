@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.sp
 import com.example.projectbankai.ui.theme.DarkPurple
 import com.example.projectbankai.ui.theme.LightPurple
 import com.example.projectbankai.R
+import com.example.projectbankai.ui.components.common.ButtonRow
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -63,7 +64,6 @@ fun LearnScreen() {
                         modifier = Modifier
                             .size(36.dp)
                     )
-
                 }
 
                 Text(
@@ -87,9 +87,9 @@ fun LearnScreen() {
 
                 }
             }
-
             LazyColumn {
                 item {
+                    ButtonRow()
                         Card(
                             modifier = Modifier
                                 .fillMaxSize()

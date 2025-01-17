@@ -26,6 +26,9 @@ import com.example.projectbankai.ui.theme.DarkPurple
 
 @Composable
 fun SelectButton(
+    modifier: Modifier = Modifier,
+    width : Dp = 160.dp,
+    size : Dp = 50.dp,
     onclick: () -> Unit,
     colors: ButtonColors,
     circleColor: Color,
@@ -36,7 +39,7 @@ fun SelectButton(
 ) {
     Button(
         onClick = onclick, // Trigger the provided click action
-        modifier = Modifier.width(160.dp),
+        modifier = modifier.width(width),
         shape = RoundedCornerShape(30.dp),
         contentPadding = PaddingValues(end = 16.dp, top = 8.dp, bottom = 8.dp, start = 8.dp),
         colors = colors
@@ -48,7 +51,7 @@ fun SelectButton(
             // Circular icon with a background
             Box(
                 modifier = Modifier
-                    .size(50.dp)
+                    .size(size)
                     .background(color = circleColor, shape = CircleShape),
                 contentAlignment = Alignment.Center
             ) {
@@ -56,7 +59,7 @@ fun SelectButton(
                     painter = icon,
                     contentDescription = text,
                     tint = iconColor,
-                    modifier = Modifier.size(iconSize)
+                    modifier = modifier.size(iconSize)
                 )
             }
 
