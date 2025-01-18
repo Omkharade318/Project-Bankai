@@ -1,8 +1,10 @@
 package com.example.projectbankai.ui.components.common
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -25,12 +27,20 @@ fun ButtonRow(modifier: Modifier = Modifier) {
 
     var selectedButton by remember { mutableIntStateOf(1) }
 
+    Spacer(
+        modifier =  modifier
+            .width(8.dp)
+            .height(16.dp)
+    )
+
     LazyRow(
-        horizontalArrangement = Arrangement.SpaceBetween,
+        horizontalArrangement = Arrangement.SpaceAround,
         verticalAlignment = Alignment.CenterVertically,
     ) {
 
         item{
+
+            Spacer(modifier =  modifier.width(8.dp))
 
             SelectButton(
                 onclick = { selectedButton = 1 },
@@ -44,8 +54,10 @@ fun ButtonRow(modifier: Modifier = Modifier) {
                 icon = painterResource(R.drawable.ic_fire),
                 width = 140.dp,
                 size = 30.dp,
-                iconSize = 30.dp
+                iconSize = 20.dp
             )
+
+            Spacer(modifier =  modifier.width(12.dp))
 
             SelectButton(
                 onclick = { selectedButton = 2 },
@@ -57,10 +69,12 @@ fun ButtonRow(modifier: Modifier = Modifier) {
                 iconColor = if (selectedButton == 2) DarkPurple else Color.White,
                 text = "Quick",
                 icon = painterResource(R.drawable.ic_quick),
-                width = 140.dp,
+                width = 120.dp,
                 size = 30.dp,
-                iconSize = 30.dp
+                iconSize = 20.dp
             )
+
+            Spacer(modifier =  modifier.width(12.dp))
 
             SelectButton(
                 onclick = { selectedButton = 3 },
@@ -71,11 +85,14 @@ fun ButtonRow(modifier: Modifier = Modifier) {
                 circleColor = if (selectedButton == 3) Color.White else DarkPurple,
                 iconColor = if (selectedButton == 3) DarkPurple else Color.White,
                 text = "Completed",
-                icon = painterResource(R.drawable.ic_fire),
+                icon = painterResource(R.drawable.ic_completed),
                 width = 155.dp,
                 size = 30.dp,
-                iconSize = 30.dp
+                iconSize = 20.dp
             )
+
+            Spacer(modifier =  modifier.width(8.dp))
+
         }
 
     }

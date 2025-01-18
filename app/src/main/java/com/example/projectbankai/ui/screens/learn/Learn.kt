@@ -87,6 +87,7 @@ fun LearnScreen() {
 
                 }
             }
+
             LazyColumn {
                 item {
                     ButtonRow()
