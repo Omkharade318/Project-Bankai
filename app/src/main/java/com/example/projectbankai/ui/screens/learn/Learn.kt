@@ -131,8 +131,8 @@ fun LearnScreen() {
                                             fontSize = 16.sp,
                                         )
                                     }
-
                                 }
+
                                 Image(
                                     painter = painterResource(R.drawable.laptop_guy),
                                     contentDescription = "guy with laptop",
