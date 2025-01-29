@@ -34,7 +34,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -119,17 +118,6 @@ fun StartUI(
             fontFamily = FontFamily.SansSerif
         )
 
-        Text(
-            text = "Discover the joy of learning, where knowledge becomes your " +
-                    "greatest companion. In this space, learning is not just a journey " +
-                    "but a pathway to personal growth.",
-            modifier = Modifier
-                .fillMaxWidth()
-                .align(Alignment.CenterHorizontally)
-                .padding(6.dp),
-            color = LightPurple,
-            fontFamily = FontFamily.SansSerif,
-        )
             Spacer(modifier = Modifier.height(16.dp))
 
         Button(
