@@ -5,16 +5,20 @@ enum class DrawerNavigationItems(
     val title: String,
     val icon: Int
 ) {
+    Profile(
+        title = "Edit Profile",
+        icon = R.drawable.ic_profile
+    ),
     Settings(
         title = "Settings",
         icon = R.drawable.ic_settings
-    ),
-    Profile(
-        title = "Profile",
-        icon = R.drawable.ic_profile
     ),
     Community(
         title = "Community",
         icon = R.drawable.ic_community
     ),
+    LogOut(
+        title = "Log Out",
+        icon = R.drawable.ic_logout
+    )
 }

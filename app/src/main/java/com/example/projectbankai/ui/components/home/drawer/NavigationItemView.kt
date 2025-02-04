@@ -4,7 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -32,14 +32,14 @@ fun NavigationItemView(
 ){
     Row(
         modifier = Modifier
-            .fillMaxSize()
-            .clip(shape = RoundedCornerShape(size = 99.dp))
+            .fillMaxWidth()
+            .clip(shape = RoundedCornerShape(size = 12.dp))
             .clickable{ onclick() }
             .background(
                 color = if (selected) ScreenPurple else Color.White,
-                shape = RoundedCornerShape(size = 99.dp)
+                shape = RoundedCornerShape(size = 12.dp)
             )
-            .padding(vertical = 18.dp, horizontal = 12.dp),
+            .padding(vertical = 12.dp, horizontal = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
@@ -54,7 +54,7 @@ fun NavigationItemView(
             text = navigationItem.title,
             color = if (selected) DarkPurple else LightPurple,
             fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
-            lineHeight = 20.sp
+            fontSize = 16.sp
         )
     }
 }

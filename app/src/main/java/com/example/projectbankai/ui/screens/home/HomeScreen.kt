@@ -1,6 +1,11 @@
 package com.example.projectbankai.ui.screens.home
 
 
+import androidx.activity.compose.BackHandler
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.Spring
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -8,8 +13,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -17,9 +25,18 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.modifier.modifierLocalOf
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,20 +45,88 @@ import androidx.compose.ui.unit.sp
 import com.example.projectbankai.ui.components.home.CircularImageButton
 import com.example.projectbankai.ui.theme.ScreenPurple
 import com.example.projectbankai.R
+import com.example.projectbankai.domain.model.CustomDrawerState
+import com.example.projectbankai.domain.model.DrawerNavigationItems
+import com.example.projectbankai.domain.model.isOpened
+import com.example.projectbankai.domain.model.opposite
 import com.example.projectbankai.ui.components.home.ButtonGroup
 import com.example.projectbankai.ui.components.home.CardGroup
+import com.example.projectbankai.ui.components.home.drawer.CustomDrawer
+import kotlin.math.roundToInt
 
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun HomeScreen() {
 
+    var drawerState by remember { mutableStateOf(CustomDrawerState.CLOSED) }
+    var selectedNavigationItem by remember { mutableStateOf(DrawerNavigationItems.Profile) }
+
+    val configuration = LocalConfiguration.current
+    val density = LocalDensity.current.density
+
+    val screenWidth = remember {
+        derivedStateOf { (configuration.screenWidthDp * density).roundToInt() }
+    }
+    val offsetValue by remember { derivedStateOf { (screenWidth.value / 4.5).dp } }
+
+    val animatedDrawerOffset by animateDpAsState(
+        targetValue = if (drawerState.isOpened()) 0.dp else (-offsetValue),
+        label = "Drawer Offset",
+        animationSpec = spring(
+            dampingRatio = 0.8f,
+            stiffness = Spring.StiffnessLow
+        )
+    )
+
+    val animatedContentOffset by animateDpAsState(
+        targetValue = if (drawerState.isOpened()) offsetValue else 0.dp,
+        label = "Content Offset",
+        animationSpec = spring(
+            dampingRatio = 0.8f,
+            stiffness = Spring.StiffnessLow
+        )
+    )
+
+    val animatedScale by animateFloatAsState(
+        targetValue = if (drawerState.isOpened()) 0.9f else 1f,
+        label = "Animated Scale",
+        animationSpec = spring(
+            dampingRatio = 0.8f,
+            stiffness = Spring.StiffnessLow
+        )
+    )
+
+    BackHandler(enabled = drawerState.isOpened()) {
+        drawerState = CustomDrawerState.CLOSED
+    }
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(ScreenPurple)
+    ) {
+        CustomDrawer(
+            modifier = Modifier
+                .offset(x = animatedDrawerOffset),
+            selectedNavigationItem = selectedNavigationItem,
+            onNavigationItemClick = {
+                selectedNavigationItem = it
+                drawerState = CustomDrawerState.CLOSED
+            },
+            onCloseClick = { drawerState = CustomDrawerState.CLOSED }
+        )
+
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(ScreenPurple)
+                .offset(x = animatedContentOffset)
+                .scale(animatedScale)
         ) {
-            LazyColumn {
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(ScreenPurple)
+            ) {
                 item {
                     Row(
                         modifier = Modifier
@@ -71,7 +156,7 @@ fun HomeScreen() {
                         CircularImageButton(
                             imageId = R.drawable.ic_profile_pic,
                             onClick = {
-
+                                drawerState = drawerState.opposite()
                             },
                             modifier = Modifier
                                 .padding(end = 16.dp, top = 8.dp)
@@ -129,8 +214,5 @@ fun HomeScreen() {
 
             }
         }
+    }
 }
-
-
-
-
