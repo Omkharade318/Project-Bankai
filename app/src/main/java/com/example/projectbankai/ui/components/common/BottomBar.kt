@@ -178,45 +178,6 @@ fun MyBottomAppBar(){
                 ) {
                     IconButton(
                         onClick = {
-                            selected.value = R.drawable.ic_community
-                            navController.navigate(BottomBarScreen.Community.screen){
-                                navController.popBackStack()
-                            }
-                        },
-                        modifier = Modifier.weight(1f)
-                    ) {
-
-                        Box(
-                            contentAlignment = Alignment.Center,
-                            modifier = Modifier
-                                .clip(RoundedCornerShape(10.dp))
-                                .background(if (selected.value == R.drawable.ic_community) LightPurple else Color.Transparent)
-                                .padding(horizontal = 10.dp, vertical = 8.dp)
-                        ) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.ic_community),
-                                modifier = Modifier.size(32.dp),
-                                contentDescription = "Community",
-                                tint = if (selected.value == R.drawable.ic_community) Color.White else LightPurple
-                            )
-
-                        }
-
-                    }
-                    Text(
-                        text = "Community",
-                        color = if (selected.value == R.drawable.ic_community) DarkPurple else LightPurple
-                    )
-                }
-
-                Spacer(modifier = Modifier.weight(1f))
-
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center,
-                ) {
-                    IconButton(
-                        onClick = {
                             selected.value = R.drawable.ic_profile
                             navController.navigate(BottomBarScreen.Profile.screen){
                                 navController.popBackStack()
@@ -265,10 +226,6 @@ fun MyBottomAppBar(){
 
             composable(route = BottomBarScreen.Learn.screen){
                 LearnScreen()
-            }
-
-            composable(route = BottomBarScreen.Community.screen){
-               CommunityScreen()
             }
 
             composable(route = BottomBarScreen.Profile.screen){
