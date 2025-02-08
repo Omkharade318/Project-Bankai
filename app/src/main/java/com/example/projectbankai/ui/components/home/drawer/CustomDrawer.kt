@@ -76,10 +76,10 @@ fun CustomDrawer(
                 Spacer(modifier = Modifier.height(4.dp))
             }
         }
-        
+
         Spacer(modifier = Modifier.weight(1f))
 
-        // Add Logout at the bottom
+        // Logout at the bottom
         NavigationItemView(
             navigationItem = DrawerNavigationItems.LogOut,
             selected = DrawerNavigationItems.LogOut == selectedNavigationItem,

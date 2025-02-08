@@ -7,6 +7,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 import com.example.projectbankai.ui.theme.LightPurple
 
 @Composable
@@ -19,7 +22,10 @@ fun CommunityScreen() {
         contentAlignment = Alignment.Center,
     ){
         Text(
-            text = "Community Screen"
+            text = "Community Screen",
+            color = Color.White,
+            fontWeight = FontWeight.Bold,
+            fontSize = 36.sp
         )
     }
 }
