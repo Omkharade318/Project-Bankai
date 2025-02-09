@@ -20,15 +20,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.projectbankai.domain.model.DrawerNavigationItems
 import com.example.projectbankai.ui.theme.DarkPurple
 import com.example.projectbankai.R
+import com.example.projectbankai.ui.navigation.home.drawer.DrawerScreens
 
 @Composable
 fun CustomDrawer(
     modifier: Modifier,
     selectedNavigationItem: DrawerNavigationItems,
     onNavigationItemClick: (DrawerNavigationItems) -> Unit,
+    navController: NavController,
     onCloseClick: () -> Unit,
 ) {
     Column(
@@ -71,7 +74,14 @@ fun CustomDrawer(
                 NavigationItemView(
                     navigationItem = item,
                     selected = item == selectedNavigationItem,
-                    onclick = { onNavigationItemClick(item) }
+                    onclick = {
+                        when (item){
+                            DrawerNavigationItems.Profile -> navController.navigate(DrawerScreens.Profile.route)
+                            DrawerNavigationItems.Community -> navController.navigate(DrawerScreens.Community.route)
+                            DrawerNavigationItems.LogOut -> navController.navigate(DrawerScreens.LogOut.route)
+                            else -> onNavigationItemClick(item)
+                        }
+                    }
                 )
                 Spacer(modifier = Modifier.height(4.dp))
             }

@@ -39,6 +39,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.rememberNavController
 import com.example.projectbankai.ui.components.home.CircularImageButton
 import com.example.projectbankai.ui.theme.ScreenPurple
 import com.example.projectbankai.R
@@ -49,6 +50,7 @@ import com.example.projectbankai.domain.model.opposite
 import com.example.projectbankai.ui.components.home.ButtonGroup
 import com.example.projectbankai.ui.components.home.CardGroup
 import com.example.projectbankai.ui.components.home.drawer.CustomDrawer
+import com.example.projectbankai.ui.navigation.home.drawer.DrawerScreens
 import kotlin.math.roundToInt
 
 
@@ -56,8 +58,10 @@ import kotlin.math.roundToInt
 @Composable
 fun HomeScreen() {
 
+    val navController = rememberNavController()
+
     var drawerState by remember { mutableStateOf(CustomDrawerState.CLOSED) }
-    var selectedNavigationItem by remember { mutableStateOf(DrawerNavigationItems.Profile) }
+    var selectedNavigationItem by remember { mutableStateOf(DrawerNavigationItems.LogOut) }
 
     val configuration = LocalConfiguration.current
     val density = LocalDensity.current.density
@@ -97,6 +101,7 @@ fun HomeScreen() {
     BackHandler(enabled = drawerState.isOpened()) {
         drawerState = CustomDrawerState.CLOSED
     }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -106,11 +111,18 @@ fun HomeScreen() {
             modifier = Modifier
                 .offset(x = animatedDrawerOffset),
             selectedNavigationItem = selectedNavigationItem,
-            onNavigationItemClick = {
-                selectedNavigationItem = it
+            onNavigationItemClick = { item->
+                selectedNavigationItem = item
                 drawerState = CustomDrawerState.CLOSED
+                when(item){
+                    DrawerNavigationItems.Profile -> navController.navigate(DrawerScreens.Profile.route)
+                    DrawerNavigationItems.Community -> navController.navigate(DrawerScreens.Community.route)
+                    DrawerNavigationItems.LogOut -> navController.navigate("")
+                    else -> {}
+                }
             },
-            onCloseClick = { drawerState = CustomDrawerState.CLOSED }
+            onCloseClick = { drawerState = CustomDrawerState.CLOSED },
+            navController = navController
         )
 
         Box(

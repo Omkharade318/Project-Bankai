@@ -9,12 +9,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.example.projectbankai.ui.theme.LightPurple
 
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun CommunityScreen() {
-
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -22,7 +23,7 @@ fun CommunityScreen() {
         contentAlignment = Alignment.Center,
     ){
         Text(
-            text = "Community Screen",
+            text = "Coming Soon...",
             color = Color.White,
             fontWeight = FontWeight.Bold,
             fontSize = 36.sp
