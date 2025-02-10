@@ -29,7 +29,6 @@ import androidx.navigation.compose.rememberNavController
 import com.example.projectbankai.ui.theme.DarkPurple
 import com.example.projectbankai.ui.theme.LightPurple
 import com.example.projectbankai.R
-import com.example.projectbankai.ui.screens.community.CommunityScreen
 import com.example.projectbankai.ui.screens.daily_challenges.DailyChallengeScreen
 import com.example.projectbankai.ui.screens.home.HomeScreen
 import com.example.projectbankai.ui.screens.learn.LearnScreen

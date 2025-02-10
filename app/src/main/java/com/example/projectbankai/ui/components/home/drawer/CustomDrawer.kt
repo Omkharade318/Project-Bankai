@@ -24,7 +24,7 @@ import androidx.navigation.NavController
 import com.example.projectbankai.domain.model.DrawerNavigationItems
 import com.example.projectbankai.ui.theme.DarkPurple
 import com.example.projectbankai.R
-import com.example.projectbankai.ui.navigation.home.drawer.DrawerScreens
+
 
 @Composable
 fun CustomDrawer(
@@ -74,14 +74,7 @@ fun CustomDrawer(
                 NavigationItemView(
                     navigationItem = item,
                     selected = item == selectedNavigationItem,
-                    onclick = {
-                        when (item){
-                            DrawerNavigationItems.Profile -> navController.navigate(DrawerScreens.Profile.route)
-                            DrawerNavigationItems.Community -> navController.navigate(DrawerScreens.Community.route)
-                            DrawerNavigationItems.LogOut -> navController.navigate(DrawerScreens.LogOut.route)
-                            else -> onNavigationItemClick(item)
-                        }
-                    }
+                    onclick = { onNavigationItemClick(item) }
                 )
                 Spacer(modifier = Modifier.height(4.dp))
             }
