@@ -39,6 +39,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.projectbankai.ui.components.home.CircularImageButton
 import com.example.projectbankai.ui.theme.ScreenPurple
@@ -50,13 +51,12 @@ import com.example.projectbankai.domain.model.opposite
 import com.example.projectbankai.ui.components.home.ButtonGroup
 import com.example.projectbankai.ui.components.home.CardGroup
 import com.example.projectbankai.ui.components.home.drawer.CustomDrawer
-import com.example.projectbankai.ui.navigation.home.drawer.DrawerScreens
 import kotlin.math.roundToInt
 
 
-@Preview(showBackground = true, showSystemUi = true)
+
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
 
     val navController = rememberNavController()
 
@@ -108,18 +108,11 @@ fun HomeScreen() {
             .background(ScreenPurple)
     ) {
         CustomDrawer(
-            modifier = Modifier
-                .offset(x = animatedDrawerOffset),
+            modifier = Modifier.offset(x = animatedDrawerOffset),
             selectedNavigationItem = selectedNavigationItem,
-            onNavigationItemClick = { item->
+            onNavigationItemClick = { item ->
                 selectedNavigationItem = item
                 drawerState = CustomDrawerState.CLOSED
-                when(item){
-                    DrawerNavigationItems.Profile -> navController.navigate(DrawerScreens.Profile.route)
-                    DrawerNavigationItems.Community -> navController.navigate(DrawerScreens.Community.route)
-                    DrawerNavigationItems.LogOut -> navController.navigate("")
-                    else -> {}
-                }
             },
             onCloseClick = { drawerState = CustomDrawerState.CLOSED },
             navController = navController

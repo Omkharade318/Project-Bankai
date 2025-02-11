@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.projectbankai.ui.screens.authentication.auth.LogIn
 import com.example.projectbankai.ui.screens.community.CommunityScreen
+import com.example.projectbankai.ui.screens.home.EditProfileScreen
 import com.example.projectbankai.ui.screens.home.HomeScreen
 import com.example.projectbankai.ui.screens.profile.ProfileScreen
 
@@ -17,11 +18,11 @@ fun DrawerNavigation(){
     NavHost(navController = navController, startDestination = DrawerScreens.Home.route){
 
         composable(DrawerScreens.Home.route){
-            HomeScreen()
+            HomeScreen(navController = navController)
         }
 
         composable(DrawerScreens.Profile.route){
-            ProfileScreen()
+            EditProfileScreen()
         }
 
         composable(DrawerScreens.Community.route){

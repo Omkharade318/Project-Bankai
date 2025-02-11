@@ -1,5 +1,6 @@
 package com.example.projectbankai.ui.components.home.drawer
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
@@ -19,7 +20,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHost
 import com.example.projectbankai.domain.model.DrawerNavigationItems
+import com.example.projectbankai.ui.navigation.home.drawer.DrawerScreens
+import com.example.projectbankai.ui.screens.home.EditProfileScreen
+import com.example.projectbankai.ui.screens.home.HomeScreen
 import com.example.projectbankai.ui.theme.DarkPurple
 import com.example.projectbankai.ui.theme.LightPurple
 import com.example.projectbankai.ui.theme.ScreenPurple
@@ -28,13 +34,40 @@ import com.example.projectbankai.ui.theme.ScreenPurple
 fun NavigationItemView(
     navigationItem: DrawerNavigationItems,
     selected: Boolean,
-    onclick: () -> Unit
+    onclick:() -> Unit,
+    navController: NavController
 ){
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .clip(shape = RoundedCornerShape(size = 12.dp))
-            .clickable{ onclick() }
+            .clickable{
+                onclick()
+                // Then navigate
+                try {
+                    val route = when (navigationItem) {
+                        DrawerNavigationItems.Profile -> DrawerScreens.Profile.route
+                        DrawerNavigationItems.Settings -> DrawerScreens.Settings.route
+                        DrawerNavigationItems.Community -> DrawerScreens.Community.route
+                        DrawerNavigationItems.LogOut -> DrawerScreens.LogOut.route
+                    }
+                    navController.navigate(route) {
+                        // Pop up to the start destination of the graph to
+                        // avoid building up a large stack of destinations
+                        popUpTo(DrawerScreens.Home.route) {
+                            saveState = true
+                        }
+                        // Avoid multiple copies of the same destination
+                        launchSingleTop = true
+                        // Restore state when re-selecting a previously selected item
+                        restoreState = true
+                    }
+                } catch (e: Exception) {
+                    // Handle navigation errors
+                    Log.e("Navigation", "Error navigating to ${navigationItem.title}", e)
+                }
+            }
             .background(
                 color = if (selected) ScreenPurple else Color.White,
                 shape = RoundedCornerShape(size = 12.dp)

@@ -60,6 +60,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     implementation ("com.airbnb.android:lottie-compose:6.1.0") //lottie Animations
-    implementation ("androidx.navigation:navigation-compose:2.7.2") // navigation
+    implementation ("androidx.navigation:navigation-compose:2.8.2") // navigation
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
 }

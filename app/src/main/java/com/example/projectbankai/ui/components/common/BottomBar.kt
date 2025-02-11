@@ -216,7 +216,7 @@ fun MyBottomAppBar(){
         ){
 
             composable(route = BottomBarScreen.Home.screen){
-                HomeScreen()
+                HomeScreen(navController = navController)
             }
 
             composable(route = BottomBarScreen.DailyChallenge.screen){

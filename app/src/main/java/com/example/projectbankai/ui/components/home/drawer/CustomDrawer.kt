@@ -74,7 +74,8 @@ fun CustomDrawer(
                 NavigationItemView(
                     navigationItem = item,
                     selected = item == selectedNavigationItem,
-                    onclick = { onNavigationItemClick(item) }
+                    onclick = { onNavigationItemClick(item) },
+                    navController = navController
                 )
                 Spacer(modifier = Modifier.height(4.dp))
             }
@@ -86,7 +87,8 @@ fun CustomDrawer(
         NavigationItemView(
             navigationItem = DrawerNavigationItems.LogOut,
             selected = DrawerNavigationItems.LogOut == selectedNavigationItem,
-            onclick = { onNavigationItemClick(DrawerNavigationItems.LogOut) }
+            onclick = { onNavigationItemClick(DrawerNavigationItems.LogOut) },
+            navController = navController
         )
         Spacer(modifier = Modifier.height(24.dp))
     }
