@@ -1,6 +1,5 @@
 package com.example.projectbankai.ui.screens.authentication.start
 
-
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
@@ -44,7 +43,6 @@ import com.example.projectbankai.R
 import com.example.projectbankai.ui.components.common.MyBottomAppBar
 import com.example.projectbankai.ui.navigation.auth.AuthNavigation
 import com.example.projectbankai.ui.navigation.auth.AuthScreens
-import com.example.projectbankai.ui.navigation.home.drawer.DrawerNavigation
 import com.example.projectbankai.ui.theme.DarkPurple
 import com.example.projectbankai.ui.theme.LightPurple
 
@@ -57,7 +55,6 @@ class StartActivity: ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AuthNavigation()
-            DrawerNavigation()
         }
     }
 }

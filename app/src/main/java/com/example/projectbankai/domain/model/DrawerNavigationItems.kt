@@ -1,13 +1,15 @@
 package com.example.projectbankai.domain.model
+
 import com.example.projectbankai.R
 
 enum class DrawerNavigationItems(
     val title: String,
     val icon: Int
 ) {
+
     Profile(
         title = "Edit Profile",
-        icon = R.drawable.ic_profile
+        icon = R.drawable.ic_profile,
     ),
     Settings(
         title = "Settings",

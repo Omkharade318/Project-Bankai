@@ -36,10 +36,11 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.projectbankai.ui.components.home.CircularImageButton
 import com.example.projectbankai.ui.theme.ScreenPurple
@@ -51,6 +52,10 @@ import com.example.projectbankai.domain.model.opposite
 import com.example.projectbankai.ui.components.home.ButtonGroup
 import com.example.projectbankai.ui.components.home.CardGroup
 import com.example.projectbankai.ui.components.home.drawer.CustomDrawer
+import com.example.projectbankai.ui.navigation.auth.AuthScreens
+import com.example.projectbankai.ui.navigation.home.drawer.DrawerScreens
+import com.example.projectbankai.ui.screens.authentication.auth.LogIn
+import com.example.projectbankai.ui.screens.community.CommunityScreen
 import kotlin.math.roundToInt
 
 
@@ -98,6 +103,12 @@ fun HomeScreen(navController: NavController) {
         )
     )
 
+    var showEditProfileScreen by remember { mutableStateOf(false) }
+    var showCommunityScreen by remember { mutableStateOf(false) }
+
+    if (showEditProfileScreen) EditProfileScreen()
+    if (showCommunityScreen) CommunityScreen()
+
     BackHandler(enabled = drawerState.isOpened()) {
         drawerState = CustomDrawerState.CLOSED
     }
@@ -111,8 +122,14 @@ fun HomeScreen(navController: NavController) {
             modifier = Modifier.offset(x = animatedDrawerOffset),
             selectedNavigationItem = selectedNavigationItem,
             onNavigationItemClick = { item ->
-                selectedNavigationItem = item
+                selectedNavigationItem = DrawerNavigationItems.LogOut
                 drawerState = CustomDrawerState.CLOSED
+                when(item){
+                    DrawerNavigationItems.Profile -> navController.navigate(DrawerScreens.Profile.route)
+                    DrawerNavigationItems.Settings -> TODO()
+                    DrawerNavigationItems.Community -> TODO()
+                    DrawerNavigationItems.LogOut -> TODO()
+                }
             },
             onCloseClick = { drawerState = CustomDrawerState.CLOSED },
             navController = navController
