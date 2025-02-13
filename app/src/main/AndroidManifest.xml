@@ -24,6 +24,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.screens.authentication.start.StartActivity" android:exported="false"/>
+        <activity android:name=".ui.screens.home.edit_profile.EditProfileScreens" android:exported="false" />
+        <activity android:name=".ui.screens.community.CommunityScreens" android:exported="false" />
+        <activity android:name=".ui.screens.home.settings.Setting" android:exported="false" />
     </application>
 
 </manifest>

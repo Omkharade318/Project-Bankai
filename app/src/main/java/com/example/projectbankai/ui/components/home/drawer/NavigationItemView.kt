@@ -21,11 +21,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.NavHost
 import com.example.projectbankai.domain.model.DrawerNavigationItems
 import com.example.projectbankai.ui.navigation.home.drawer.DrawerScreens
-import com.example.projectbankai.ui.screens.home.EditProfileScreen
-import com.example.projectbankai.ui.screens.home.HomeScreen
 import com.example.projectbankai.ui.theme.DarkPurple
 import com.example.projectbankai.ui.theme.LightPurple
 import com.example.projectbankai.ui.theme.ScreenPurple

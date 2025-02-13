@@ -1,12 +1,12 @@
 package com.example.projectbankai.ui.components.home.drawer
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -16,24 +16,21 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.mutableFloatStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.projectbankai.domain.model.DrawerNavigationItems
 import com.example.projectbankai.ui.theme.DarkPurple
 import com.example.projectbankai.R
-import com.example.projectbankai.ui.navigation.auth.AuthScreens
-import com.example.projectbankai.ui.navigation.home.drawer.DrawerScreens
-import com.example.projectbankai.ui.screens.community.CommunityScreen
-import com.example.projectbankai.ui.screens.home.EditProfileScreen
+import com.example.projectbankai.ui.screens.authentication.start.StartActivity
+import com.example.projectbankai.ui.screens.community.CommunityScreens
+import com.example.projectbankai.ui.screens.home.edit_profile.EditProfileScreens
+import com.example.projectbankai.ui.screens.home.settings.Setting
+import com.example.projectbankai.ui.screens.home.settings.Settings
 
 
 @Composable
@@ -86,10 +83,17 @@ fun CustomDrawer(
 
         Spacer(modifier = Modifier.height(40.dp))
 
+        val context = LocalContext.current
+
         NavigationItemView(
             navigationItem = DrawerNavigationItems.Profile,
             selected = DrawerNavigationItems.Profile == selectedNavigationItem,
-            onclick = {onNavigationItemClick},
+            onclick = {
+                val intent = Intent(context, EditProfileScreens::class.java).apply {
+                    putExtra("message", "Clicked via Text!")
+                }
+                context.startActivity(intent)
+            },
             navController = navController
         )
         Spacer(modifier = Modifier.height(24.dp))
@@ -97,7 +101,12 @@ fun CustomDrawer(
         NavigationItemView(
             navigationItem = DrawerNavigationItems.Community,
             selected = DrawerNavigationItems.Community == selectedNavigationItem,
-            onclick = { onNavigationItemClick },
+            onclick = {
+                val intent = Intent(context, CommunityScreens::class.java).apply {
+                    putExtra("message", "Clicked via Text!")
+                }
+                    context.startActivity(intent)
+                      },
             navController = navController
         )
         Spacer(modifier = Modifier.height(24.dp))
@@ -105,7 +114,12 @@ fun CustomDrawer(
         NavigationItemView(
             navigationItem = DrawerNavigationItems.Settings,
             selected = DrawerNavigationItems.Settings == selectedNavigationItem,
-            onclick = { onNavigationItemClick },
+            onclick = {
+                val intent = Intent(context, Setting::class.java).apply {
+                    putExtra("message", "Clicked via Text!")
+                }
+                context.startActivity(intent)
+            },
             navController = navController
         )
         Spacer(modifier = Modifier.height(24.dp))
@@ -117,7 +131,12 @@ fun CustomDrawer(
         NavigationItemView(
             navigationItem = DrawerNavigationItems.LogOut,
             selected = DrawerNavigationItems.LogOut == selectedNavigationItem,
-            onclick = {  },
+            onclick = {
+                val intent = Intent(context, StartActivity::class.java).apply {
+                    putExtra("message", "Clicked via Text!")
+                }
+                context.startActivity(intent)
+            },
             navController = navController
         )
         Spacer(modifier = Modifier.height(24.dp))

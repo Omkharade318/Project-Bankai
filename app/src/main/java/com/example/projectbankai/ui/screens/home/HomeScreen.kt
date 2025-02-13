@@ -39,8 +39,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.projectbankai.ui.components.home.CircularImageButton
 import com.example.projectbankai.ui.theme.ScreenPurple
@@ -52,10 +50,8 @@ import com.example.projectbankai.domain.model.opposite
 import com.example.projectbankai.ui.components.home.ButtonGroup
 import com.example.projectbankai.ui.components.home.CardGroup
 import com.example.projectbankai.ui.components.home.drawer.CustomDrawer
-import com.example.projectbankai.ui.navigation.auth.AuthScreens
-import com.example.projectbankai.ui.navigation.home.drawer.DrawerScreens
-import com.example.projectbankai.ui.screens.authentication.auth.LogIn
 import com.example.projectbankai.ui.screens.community.CommunityScreen
+import com.example.projectbankai.ui.screens.home.edit_profile.EditProfileScreen
 import kotlin.math.roundToInt
 
 
@@ -118,18 +114,13 @@ fun HomeScreen(navController: NavController) {
             .fillMaxSize()
             .background(ScreenPurple)
     ) {
+
         CustomDrawer(
             modifier = Modifier.offset(x = animatedDrawerOffset),
             selectedNavigationItem = selectedNavigationItem,
             onNavigationItemClick = { item ->
                 selectedNavigationItem = DrawerNavigationItems.LogOut
                 drawerState = CustomDrawerState.CLOSED
-                when(item){
-                    DrawerNavigationItems.Profile -> navController.navigate(DrawerScreens.Profile.route)
-                    DrawerNavigationItems.Settings -> TODO()
-                    DrawerNavigationItems.Community -> TODO()
-                    DrawerNavigationItems.LogOut -> TODO()
-                }
             },
             onCloseClick = { drawerState = CustomDrawerState.CLOSED },
             navController = navController
